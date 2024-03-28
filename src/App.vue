@@ -1,26 +1,17 @@
 <template>
-  <img
-    alt="Vue logo"
-    src="./assets/logo.png"
-  />
-  <button @click="show = !show">Menu</button>
-  <transition name="fade">
-    <MenuComponent v-show="show" />
-  </transition>
+  <ModalComponent />
 </template>
 
 <script>
-import MenuComponent from "./components/Menu.vue";
+import ModalComponent from "./components/Modal.vue";
 
 export default {
   name: "App",
   components: {
-    MenuComponent
+    ModalComponent
   },
   data() {
-    return {
-      show: false
-    };
+
   }
 };
 </script>
