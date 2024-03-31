@@ -1,13 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <component :is="currentComponent" />
+  <img
+    alt="Vue logo"
+    src="./assets/logo.png"
+  />
+  <HelloWorld/>
+  {{algo}}
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
+import base from "@/mixins/base";
 
 export default {
   name: "App",
+  mixins: [base],
   components: {
     HelloWorld,
   },
