@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {ref, reactive} from 'vue';
+import { reactive, ref, watch } from 'vue';
 
 export default {
   setup() {
@@ -21,6 +21,20 @@ export default {
       reactiveObject.counter++;
     }, 1000);
 
+    // watchers para una variable reactive
+    watch(() => reactiveObject, (newValue, oldValue) => {
+      console.log('reactiveObject', newValue, oldValue);
+    });
+
+    // watchers para una sola propiedad de reactive
+    watch(() => reactiveObject.counter, (newValue, oldValue) => {
+      console.log('counter', newValue, oldValue);
+    });
+
+    // Watchers para ref
+    watch(counterRef, (newValue, oldValue) => {
+      console.log('counterRef', newValue, oldValue);
+    });
     return {
       counterRef,
       reactiveObject
@@ -30,18 +44,24 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style
+    scoped
+    lang="scss"
+>
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
