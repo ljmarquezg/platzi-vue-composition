@@ -1,44 +1,23 @@
 <template>
   <div class="hello">
-    <h1>{{ counterRef }}</h1>
-
-    <h1>{{ reactiveObject }}</h1>
+    <h1>{{ fullName }}</h1>
   </div>
 </template>
 
 <script>
-import { reactive, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 
 export default {
   setup() {
-    const counterRef = ref(0); // Crea referencia reactiva
-    const reactiveObject = reactive({ // crea ubicación reactivo
-      counter: 0
-    });
+    const firstName = ref('John');
+    const lastName = ref('Doe');
+    const fullName = computed(() => `${firstName.value} ${lastName.value}`);
 
-    setInterval(() => {
-      counterRef.value++;
-      reactiveObject.counter++;
-    }, 1000);
-
-    // watchers para una variable reactive
-    watch(() => reactiveObject, (newValue, oldValue) => {
-      console.log('reactiveObject', newValue, oldValue);
-    });
-
-    // watchers para una sola propiedad de reactive
-    watch(() => reactiveObject.counter, (newValue, oldValue) => {
-      console.log('counter', newValue, oldValue);
-    });
-
-    // Watchers para ref
-    watch(counterRef, (newValue, oldValue) => {
-      console.log('counterRef', newValue, oldValue);
-    });
     return {
-      counterRef,
-      reactiveObject
-    }
+      firstName,
+      lastName,
+      fullName
+    };
   }
 };
 </script>

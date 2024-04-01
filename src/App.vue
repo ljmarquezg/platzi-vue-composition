@@ -4,7 +4,6 @@
     src="./assets/logo.png"
   />
   <HelloWorld/>
-  {{algo}}
 </template>
 
 <script>
