@@ -9,11 +9,9 @@
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
-import base from "@/mixins/base";
 
 export default {
   name: "App",
-  mixins: [base],
   components: {
     HelloWorld,
   },

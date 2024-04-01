@@ -1,15 +1,31 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ counterRef }}</h1>
+
+    <h1>{{ reactiveObject }}</h1>
   </div>
 </template>
 
 <script>
+import {ref, reactive} from 'vue';
+
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
+  setup() {
+    const counterRef = ref(0); // Crea referencia reactiva
+    const reactiveObject = reactive({ // crea ubicación reactivo
+      counter: 0
+    });
+
+    setInterval(() => {
+      counterRef.value++;
+      reactiveObject.counter++;
+    }, 1000);
+
+    return {
+      counterRef,
+      reactiveObject
+    }
+  }
 };
 </script>
 
