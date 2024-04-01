@@ -1,9 +1,12 @@
 <template>
   <img
-    alt="Vue logo"
-    src="./assets/logo.png"
+      alt="Vue logo"
+      src="./assets/logo.png"
   />
-  <HelloWorld/>
+  <HelloWorld
+      firstName="Juan"
+      lastName="Perez"
+  />
 </template>
 
 <script>
