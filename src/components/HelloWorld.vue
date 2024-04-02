@@ -12,10 +12,14 @@ export default {
     firstName: String,
     lastName: String
   },
-  setup(props) {
+  setup(props, context) {
     const {firstName, lastName} = toRefs(props);
     const fullName = computed(() => `${firstName.value} ${lastName.value}`);
 
+    console.log(context.attrs); // all attributes passed to the component that are not props
+    context.emit('update:firstName', 'John') // emit an event to parent component to update firstName prop
+    context.expose({fullName}) // expose fullName to parent component
+    context.slots() // get all slots passed to the component
     return {
       fullName
     };
